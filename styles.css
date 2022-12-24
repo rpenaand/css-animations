@@ -41,25 +41,59 @@ a {
 .btn:visited,
 .btn:link {
   color: darkblue;
-  padding: 1.6rem 3.2rem;
+  padding: 1.2rem 3.2rem;
   border: 2px solid darkblue;
   position: relative;
+  overflow: hidden;
 }
 
-.btn--slide::before {
+.btn::before,
+.btn::after {
   content: '';
-  background-color: rgb(24, 173, 219);
+
   width: 100%;
   height: 100%;
   position: absolute;
   top: 0;
   left: 0;
   z-index: -1;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn--slide::before {
+  background-color: rgb(24, 173, 219);
   transform-origin: left;
   transform: scaleX(0);
-  transition: all 0.2s ease-in-out;
 }
 
 .btn--slide:hover.btn::before {
   transform: scaleX(1);
+}
+
+.btn--rotate::before {
+  background-color: rgb(24, 173, 219);
+  transform-origin: bottom left;
+  transform: rotate(-90deg);
+}
+
+.btn--rotate:hover.btn::before {
+  transform: rotate(0);
+}
+
+.btn--cross::before {
+  background-color: rgb(24, 173, 219);
+  transform: rotateX(90deg);
+}
+
+.btn:hover.btn--cross::before {
+  transform: rotateX(0);
+}
+
+.btn--cross::after {
+  background-color: rgb(24, 173, 219);
+  transform: rotateY(90deg);
+}
+
+.btn:hover.btn--cross::after {
+  transform: rotateY(0);
 }
